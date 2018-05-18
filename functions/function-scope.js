@@ -15,6 +15,4 @@ let convertFahrenheitToCelsius = function (temp) {
 let freezingTemp = convertFahrenheitToCelsius(32)
 let boilingTemp = convertFahrenheitToCelsius(100)
 
-
-
 console.log(freezingTemp)

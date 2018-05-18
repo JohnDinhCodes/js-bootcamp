@@ -9,7 +9,8 @@ console.log(result)
 // Default arguments
 
 let getScoreText = function (name = 'Anonymous', score = 0) {
-    return 'Name: ' + name + ' - Score: ' + score
+    // return 'Name: ' + name + ' - Score: ' + score
+    return `Name: ${name} - Score: ${score}`
 }
 
 let scoreText = getScoreText(undefined, 999999999)
@@ -25,8 +26,13 @@ let tipCalculator = function (total, tipPercent = 0.2) {
     let tipPercentText = tipPercent * 100
     let tipCost = total * tipPercent    
     let totalCost = total + tipCost
-    return 'Your total is: $' + total + '. You are tipping ' + tipPercentText + '%! ($' + tipCost + ') - $' + totalCost
+    // return 'Your total is: $' + total + '. You are tipping ' + tipPercentText + '%! ($' + tipCost + ') - $' + totalCost
+    return `Your total is: $${total}. You are tipping ${tipPercentText}%! ($${tipCost}) - $${totalCost}`
 }
 
 let bill = tipCalculator(100, 0.1)
 console.log(bill)
+
+let name = 'JayDinh'
+let age = 20
+console.log(`Hey, my name is ${name}! I am ${age} years old.`)
