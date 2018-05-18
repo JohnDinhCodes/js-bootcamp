@@ -2,11 +2,11 @@
 // 15/20 -> You got a C (75)!
 // A 90-100, B 80-89, C 70-79, D 68-69, F 0-59
 
-let gradeCalculator = function (score, total) {
+const gradeCalculator = function (score, total) {
 
     let grade = null
 
-    let percentage = (score / total) * 100
+    const percentage = (score / total) * 100
 
     if (percentage >= 90) {
         grade = 'A'
@@ -24,5 +24,5 @@ let gradeCalculator = function (score, total) {
     
 }
 
-let algebraScore = gradeCalculator(100, 100)
+const algebraScore = gradeCalculator(100, 100)
 console.log(algebraScore)
