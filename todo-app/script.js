@@ -15,30 +15,40 @@ const todos = [{
     completed: false
 }]
 
-const incompleteTodos = todos.filter(function (todo) {
-    return !todo.completed
+const filters = {
+    searchText: ''
+}
+
+const renderTodos = function (todos, filters) {
+    const filteredTodos = todos.filter(function (todo) {
+        return todo.title.toLowerCase().includes(filters.searchText.toLowerCase())
+    })
+
+    const incompleteTodos = filteredTodos.filter(function (todo) {
+        return !todo.completed
+    })
+
+    document.querySelector('#todos').innerHTML = ''
+
+    const summary = document.createElement('h2')
+    summary.textContent = `You have ${incompleteTodos.length} todos left`
+    document.querySelector('#todos').appendChild(summary)
+
+    filteredTodos.forEach(function (todo) {
+        const todoEl = document.createElement('p')
+        todoEl.textContent = todo.title
+        document.querySelector('#todos').appendChild(todoEl)
+    })
+}
+
+renderTodos(todos, filters)
+
+document.querySelector('#search-text').addEventListener('input', function (e) {
+    filters.searchText = e.target.value
+    renderTodos(todos, filters)
 })
 
-const summary = document.createElement('h2')
-summary.textContent = `You have ${incompleteTodos.length} todos left`
-
-document.querySelector('body').appendChild(summary)
-
-todos.forEach(function (todo) {
-    const p = document.createElement('p')
-    p.textContent = todo.title
-    document.querySelector('body').appendChild(p)
-})
-
-// You have 2 todos left (p element)
-// Add a p for each todo above (use text value)
-
-const button = document.querySelector('#add-todo')
-
-button.addEventListener('click', function (e) {
-    console.log('I am adding a new todo')
-})
-
-document.querySelector('#todo-input').addEventListener('input', function (e) {
-    console.log(e.target.value)
-})
+// 1. Create a form with a single input for todo text
+// 2. Setup a submit handler and cancel the default action
+// 3. Add a new item to the todos array with that text data (completed value of false)
+// 4. Rerender the application
