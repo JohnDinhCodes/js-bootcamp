@@ -48,6 +48,17 @@ document.querySelector('#search-text').addEventListener('input', function (e) {
     renderTodos(todos, filters)
 })
 
+document.querySelector('#create-todo').addEventListener('submit', function (e) {
+    e.preventDefault()
+    const newTodo = e.target.newTodo.value
+    todos.push({
+        title: newTodo,
+        completed: false
+    })
+    renderTodos(todos, filters)
+    e.target.newTodo.value = ''    
+})
+
 // 1. Create a form with a single input for todo text
 // 2. Setup a submit handler and cancel the default action
 // 3. Add a new item to the todos array with that text data (completed value of false)
