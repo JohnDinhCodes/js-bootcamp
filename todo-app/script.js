@@ -32,3 +32,9 @@ todos.forEach(function (todo) {
 
 // You have 2 todos left (p element)
 // Add a p for each todo above (use text value)
+
+const button = document.querySelector('button')
+
+button.addEventListener('click', function (e) {
+    console.log('I am adding a new todo')
+})
