@@ -6,15 +6,14 @@ const todos = [{
     completed: false
 }, {
     title: 'Update Portfolio',
-    completed: false
+    completed: true
 }, {
     title: 'Learn PHP',
-    completed: true
+    completed: false
 }, {
     title: 'Create CMS Website',
     completed: false
 }]
-// const todos = ['Study JavaScript', 'Study React', 'Update Portfolio', 'Learn PHP', 'Create CMS Website']
 
 // 1. Convert array to array of objects -> text, completed
 // 2. Create function to remove a todo by text value
@@ -28,5 +27,28 @@ const deleteTodo = function (todosObject, todoTitle) {
     }
 }
 
-deleteTodo(todos, 'study javascript')
+const getThingsToDo = function (todos) {
+    return todos.filter(function (todo) {
+        return !todo.completed
+    })
+}
+
+const sortTodos = function (todos) {
+    todos.sort(function (a, b) {
+        if (a.completed < b.completed) {
+            return -1
+        } else if (b.completed < a.completed) {
+            return 1
+        } else {
+            return 0
+        }
+    })
+}
+
+sortTodos(todos)
 console.log(todos)
+
+// console.log(getThingsToDo(todos))
+
+// deleteTodo(todos, 'study javascript')
+// console.log(todos)
