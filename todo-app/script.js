@@ -1,25 +1,15 @@
-const todos = [{
-    title: 'Study JavaScript',
-    completed: true
-}, {
-    title: 'Study React',
-    completed: false
-}, {
-    title: 'Update Portfolio',
-    completed: true
-}, {
-    title: 'Learn PHP',
-    completed: false
-}, {
-    title: 'Create CMS Website',
-    completed: false
-}]
+let todos = []
 
 const filters = {
     searchText: '',
     hideCompleted: false
 }
 
+let todosJSON = localStorage.getItem('todos')
+
+if (todosJSON !== null) {
+    todos = JSON.parse(todosJSON)
+}
 
 const renderTodos = function (todos, filters) {
     
@@ -62,16 +52,12 @@ document.querySelector('#create-todo').addEventListener('submit', function (e) {
         title: newTodo,
         completed: false
     })
+    todosJSON = JSON.stringify(todos)
+    localStorage.setItem('todos', todosJSON)
     renderTodos(todos, filters)
     e.target.newTodo.value = ''    
 })
-
 document.querySelector('#hide-completed').addEventListener('change', function (e) {
     filters.hideCompleted = e.target.checked
     renderTodos(todos, filters)
 })
-
-// 1. Create a checkbox and setup event listener --> "hide completed"
-// 2. Create new hideCompleted filter (default false)
-// 3. Update hideCompleted and rerender list on checkbox change
-// 4. Setup renderTodos to remove completed items
