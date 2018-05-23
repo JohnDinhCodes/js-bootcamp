@@ -1,3 +1,7 @@
+// 1. Wire up button event
+// 2. Remove todo by id
+// 3. Save and rerender the todos list
+
 // Fetch exisitng todos from localStorage
 const getSavedTodos = function () {
 
@@ -11,17 +15,19 @@ const getSavedTodos = function () {
 }
 
 // Save todos to localStorage
-const pushAndSaveTodos = function (event) {
+const saveTodos = function () {
+    localStorage.setItem('todos', JSON.stringify(todos))
+}
 
-    const newTodo = event.target.newTodo.value
-
-    todos.push({
-        id: uuidv4(),
-        title: newTodo,
-        completed: false
+// Remove todo by id
+const removeTodo = function (id) {
+    const todoIndex = todos.findIndex(function (todo) {
+        return todo.id === id
     })
 
-    localStorage.setItem('todos', JSON.stringify(todos))
+    if (todoIndex > -1) {
+        todos.splice(todoIndex, 1)
+    }
 }
 
 // Get the DOM elements for an individual note
@@ -40,6 +46,12 @@ const generateTodoDOM = function (todo) {
     todoEl.appendChild(checkEl)
     todoEl.appendChild(textEl)
     todoEl.appendChild(delButton)
+
+    delButton.addEventListener('click', function () {
+        removeTodo(todo.id)
+        saveTodos()
+        renderTodos(todos, filters)
+    })
 
     return todoEl
 }

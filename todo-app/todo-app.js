@@ -14,7 +14,16 @@ document.querySelector('#search-text').addEventListener('input', function (e) {
 
 document.querySelector('#create-todo').addEventListener('submit', function (e) {
     e.preventDefault()
-    pushAndSaveTodos(e)
+
+    const newTodo = event.target.newTodo.value
+
+    todos.push({
+        id: uuidv4(),
+        title: newTodo,
+        completed: false
+    })
+
+    saveTodos()
     renderTodos(todos, filters)
     e.target.newTodo.value = ''    
 })
