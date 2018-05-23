@@ -16,6 +16,7 @@ const pushAndSaveTodos = function (event) {
     const newTodo = event.target.newTodo.value
 
     todos.push({
+        id: uuidv4(),
         title: newTodo,
         completed: false
     })
