@@ -1,7 +1,3 @@
-// 1. Wire up button event
-// 2. Remove todo by id
-// 3. Save and rerender the todos list
-
 // Fetch exisitng todos from localStorage
 const getSavedTodos = function () {
 
@@ -32,10 +28,17 @@ const removeTodo = function (id) {
 
 // Get the DOM elements for an individual note
 const generateTodoDOM = function (todo) {
+
     const todoEl = document.createElement('div')
 
     const checkEl = document.createElement('input')
     checkEl.setAttribute('type', 'checkbox')
+    checkEl.checked = todo.completed
+    checkEl.addEventListener('change', function (e) {
+        todo.completed = e.target.checked
+        saveTodos()
+        renderTodos(todos, filters)
+    })
 
     const textEl = document.createElement('span')
     textEl.textContent = todo.title
