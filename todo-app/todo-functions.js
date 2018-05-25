@@ -2,7 +2,7 @@
 const getSavedTodos = () => {
 
     const todosJSON = localStorage.getItem('todos')
-    return todosJSON !== null ? JSON.parse(todosJSON) : []
+    return todosJSON ? JSON.parse(todosJSON) : []
 }
 
 // Save todos to localStorage
@@ -20,7 +20,7 @@ const removeTodo = (id) => {
 }
 
 // Get the DOM elements for an individual note
-const generateTodoDOM = (todo) =>{
+const generateTodoDOM = (todo) => {
 
     const todoEl = document.createElement('div')
 
