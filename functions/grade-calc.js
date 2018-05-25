@@ -4,9 +4,12 @@
 
 const gradeCalculator = function (score, total) {
 
-    let grade = null
+    if (typeof score !== 'number' || typeof totalScore !== 'number') {
+        throw Error('Please provide numbers only')
+    }
 
     const percentage = (score / total) * 100
+    let grade = ''
 
     if (percentage >= 90) {
         grade = 'A'
@@ -21,8 +24,11 @@ const gradeCalculator = function (score, total) {
     }
 
     return `You got a ${grade} (${percentage}%)!`
-    
 }
 
-const algebraScore = gradeCalculator(100, 100)
-console.log(algebraScore)
+try {
+    const algebraScore = gradeCalculator(100, 100)
+    console.log(algebraScore)
+} catch (e) {
+    console.log(e.message)
+}
