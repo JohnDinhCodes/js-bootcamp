@@ -40,8 +40,20 @@ Hangman.prototype.makeGuess = function (letter) {
 Hangman.prototype.getStatus = function (puzzleEl) {
     if (this.remainingGuesses <= 0) {
         this.status = 'failed'
+        puzzleEl.textContent = this.word.join('')        
     } else if (this.remainingGuesses > 0 && !puzzleEl.textContent.includes('*')) {
         this.status = 'finished'
     }
     console.log(this.status)
+}
+
+Hangman.prototype.statusMessage = function () {
+    const answer = this.word.join('')
+    if (this.status === 'playing') {
+        return `Remaining Guesses: ${this.remainingGuesses}`
+    } else if (this.status === 'failed') {
+        return `Nice try! The word was "${answer}"`
+    } else {
+        return 'Great work! you guessed the word.'
+    }
 }
