@@ -1,8 +1,3 @@
-// 1. Display the puzzle to the browserinstead of the console
-// 2. Display the guesses left to the browser instead of console
-// 3. Seperate the Hangman definition from the rest of the app code (use app.js)
-
-
 class Hangman {
     constructor(word, remainingGuesses) {
         this.word = word.toLowerCase().split('')
