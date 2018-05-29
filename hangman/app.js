@@ -10,6 +10,7 @@ window.addEventListener('keypress', (e) => {
         game1.makeGuess(e.key)
         game1.remainingGuesses
         puzzleEl.textContent = game1.getPuzzle()
-        guessesEl.textContent = game1.remainingGuesses        
+        guessesEl.textContent = game1.remainingGuesses  
+        game1.getStatus(puzzleEl)      
     }
 })
