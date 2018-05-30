@@ -5,10 +5,11 @@ class Hangman {
         this.guessedLetters = []
         this.status = 'playing'
     }
-    getPuzzle() {
+    get getPuzzle() {
         let puzzle = ''
+
         this.word.forEach((letter) => {
-            if (this.guessedLetters.includes(letter)) {
+            if (this.guessedLetters.includes(letter) || (letter === ' ') || letter === '-') {
                 puzzle += letter
             } else {
                 puzzle += '*'
@@ -38,14 +39,14 @@ class Hangman {
         }
         console.log(this.status)
     }
-    statusMessage() {
+    get statusMessage() {
         const answer = this.word.join('')
         if (this.status === 'playing') {
             return `Remaining Guesses: ${this.remainingGuesses}`
         } else if (this.status === 'failed') {
             return `Nice try! The word was "${answer}"`
         } else {
-            return 'Great work! you guessed the word.'
+            return 'Great work! You guessed the word.'
         }
     }
 }
