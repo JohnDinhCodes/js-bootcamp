@@ -37,7 +37,6 @@ class Hangman {
         } else if (this.remainingGuesses > 0 && !puzzleEl.textContent.includes('*')) {
             this.status = 'finished'
         }
-        console.log(this.status)
     }
     get statusMessage() {
         const answer = this.word.join('')
