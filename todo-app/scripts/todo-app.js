@@ -17,18 +17,20 @@ document.querySelector('#search-text').addEventListener('input', (e) => {
 document.querySelector('#create-todo').addEventListener('submit', (e) => {
     e.preventDefault()
 
-    const newTodo = event.target.newTodo.value
+    const newTodo = (event.target.newTodo.value).trim()
 
-    todos.push({
-        id: uuidv4(),
-        title: newTodo,
-        completed: false
-    })
-
-    saveTodos()
-    renderTodos(todos, filters)
-    e.target.newTodo.value = ''    
+    if (newTodo.length > 0) {
+        todos.push({
+            id: uuidv4(),
+            title: newTodo,
+            completed: false
+        })
+        saveTodos()
+        renderTodos(todos, filters)
+        e.target.newTodo.value = ''   
+    }
 })
+
 document.querySelector('#hide-completed').addEventListener('change', (e) => {
     filters.hideCompleted = e.target.checked
     renderTodos(todos, filters)
