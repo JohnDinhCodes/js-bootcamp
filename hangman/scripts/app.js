@@ -16,12 +16,20 @@ window.addEventListener('keypress', (e) => {
 const render = () => {
     puzzleEl.innerHTML = ''
     guessesEl.textContent = game.statusMessage
-    
-    game.getPuzzle.split('').forEach((letter) => {
-        const letterEl = document.createElement('span')
-        letterEl.textContent = letter
-        puzzleEl.appendChild(letterEl)
-    })
+    if (game.status === 'failed') {
+        puzzleEl.classList.add('fail')
+        game.word.forEach((letter) => {
+            const letterEl = document.createElement('span')
+            letterEl.textContent = letter
+            puzzleEl.appendChild(letterEl)
+        })
+    } else {
+        game.getPuzzle.split('').forEach((letter) => {
+            const letterEl = document.createElement('span')
+            letterEl.textContent = letter
+            puzzleEl.appendChild(letterEl)
+        })
+    }
 }
 
 const startgame = async () => {
@@ -30,6 +38,9 @@ const startgame = async () => {
     render()
 }
 
-document.querySelector('#reset').addEventListener('click', startgame)
+document.querySelector('#reset').addEventListener('click', () => {
+    puzzleEl.classList.remove('fail')
+    startgame()
+})
 
 startgame()

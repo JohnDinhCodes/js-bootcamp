@@ -33,7 +33,6 @@ class Hangman {
     getStatus(puzzleEl) {
         if (this.remainingGuesses <= 0) {
             this.status = 'failed'
-            puzzleEl.textContent = this.word.join('')
         } else if (this.remainingGuesses > 0 && !puzzleEl.textContent.includes('*')) {
             this.status = 'finished'
         }
