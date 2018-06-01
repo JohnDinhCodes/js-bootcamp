@@ -1,14 +1,17 @@
+import Hangman from './hangman'
+import getPuzzle from './requests'
+
 const puzzleEl = document.querySelector('#puzzle')
 const guessesEl = document.querySelector('#guesses')
 let game
 
 window.addEventListener('keypress', (e) => {
-    if(game.status === 'playing') {
+    if (game.status === 'playing') {
         if (e.charCode >= 97 && e.charCode <= 122) {
             game.makeGuess(e.key)
-            puzzleEl.textContent = game.getPuzzle            
-            game.getStatus(puzzleEl)            
-            render()      
+            puzzleEl.textContent = game.getPuzzle
+            game.getStatus(puzzleEl)
+            render()
         }
     }
 })
