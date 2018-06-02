@@ -1,7 +1,7 @@
 {
-  "name": "boilerplate",
+  "name": "notes-app",
   "version": "1.0.0",
-  "description": "A boilerplate with webpack and babel",
+  "description": "Note taking application",
   "main": "input.js",
   "scripts": {
     "dev-server": "webpack-dev-server --mode development",
@@ -18,5 +18,9 @@
     "webpack": "^4.10.2",
     "webpack-cli": "^2.1.4",
     "webpack-dev-server": "^3.1.4"
+  },
+  "dependencies": {
+    "moment": "^2.22.2",
+    "uuid": "^3.2.1"
   }
 }
